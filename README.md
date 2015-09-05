@@ -35,16 +35,17 @@ objectIdStub();
 ```
 
 ## API Functions
+
 <dl>
-<dt><a href="#_createObjectId">_createObjectId(from)</a> ⇒ <code>string</code></dt>
+<dt><a href="#_createObjectId">_createObjectId(from, a)</a> ⇒ <code>string</code></dt>
 <dd><p>Create an object id from the given number</p>
 </dd>
-<dt><a href="#objectIdStubInit">objectIdStubInit()</a> ⇒ <code>function</code></dt>
+<dt><a href="#objectIdStubInit">objectIdStubInit(generator)</a> ⇒ <code>function</code></dt>
 <dd><p>Instanciate a new object id generator</p>
 </dd>
 </dl>
 <a name="_createObjectId"></a>
-## _createObjectId(from) ⇒ <code>string</code>
+## _createObjectId(from, a) ⇒ <code>string</code>
 Create an object id from the given number
 
 **Kind**: global function  
@@ -54,16 +55,22 @@ Create an object id from the given number
 | Param | Type | Description |
 | --- | --- | --- |
 | from | <code>Number</code> | Number from wich to create the id |
+| a | <code>function</code> | constructor to build ObjectId instances (default to strings) |
 
 <a name="objectIdStubInit"></a>
-## objectIdStubInit() ⇒ <code>function</code>
+## objectIdStubInit(generator) ⇒ <code>function</code>
 Instanciate a new object id generator
 
 **Kind**: global function  
 **Returns**: <code>function</code> - The new generator  
 **Api**: public  
 
-* [objectIdStubInit()](#objectIdStubInit) ⇒ <code>function</code>
+| Param | Type | Description |
+| --- | --- | --- |
+| generator | <code>Object</code> | options (options.ctor to specify a custom constructor) |
+
+
+* [objectIdStubInit(generator)](#objectIdStubInit) ⇒ <code>function</code>
   * [~getNextObjectId()](#objectIdStubInit..getNextObjectId) ⇒ <code>String</code>
     * [.next()](#objectIdStubInit..getNextObjectId.next) ⇒ <code>String</code>
     * [.reset()](#objectIdStubInit..getNextObjectId.reset) ⇒ <code>void</code>
@@ -92,11 +99,4 @@ Lookup what will be the next id
 Reset the internal id
 
 **Kind**: static method of <code>[getNextObjectId](#objectIdStubInit..getNextObjectId)</code>  
-**Api**: public
-
-## Contributing
-Feel free to push your code if you agree with publishing under the MIT license.
-
-## Stats
-[![NPM](https://nodei.co/npm/objectid-stub.png?downloads=true&stars=true)](https://nodei.co/npm/objectid-stub/)
-[![NPM](https://nodei.co/npm-dl/objectid-stub.png)](https://nodei.co/npm/objectid-stub/)
+**Api**: public  
