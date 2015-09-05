@@ -3,8 +3,8 @@
 /**
  * Create an object id from the given number
  * @param  {Number} from Number from wich to create the id
- * @param  {Function} a constructor to build ObjectId instances (default to strings)
- * @return {string}      The object id in a string representation
+ * @param  {Function} MyConstrutor  a constructor to build ObjectId instances (default to strings)
+ * @return {string|MyConstructor}      The object id in a string/MyConstructor representation
  * @api private
  */
 function _createObjectId(from, MyConstrutor) {
@@ -15,7 +15,7 @@ function _createObjectId(from, MyConstrutor) {
 
 /**
  * Instanciate a new object id generator
- * @param  {Object} generator options (options.ctor to specify a custom constructor)
+ * @param  {Object} options generator options (options.ctor to specify a custom constructor)
  * @return {Function} The new generator
  * @api public
  */
