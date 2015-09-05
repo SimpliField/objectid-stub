@@ -6,20 +6,46 @@ var assert = require('assert');
 describe('objectid-stub', function() {
   var objectIdStub;
 
-  beforeEach(function() {
-    objectIdStub = initObjectIdGenerator();
+
+  describe('without ctor option', function() {
+
+    beforeEach(function() {
+      objectIdStub = initObjectIdGenerator();
+    });
+
+    it('should work as expected', function() {
+      assert.equal(objectIdStub(), '570b570b570bffffffffffff');
+
+      assert.equal(objectIdStub.next(), objectIdStub());
+
+      assert.equal(objectIdStub(), '570b570b570bfffffffffffd');
+
+      objectIdStub.reset();
+
+      assert.equal(objectIdStub(), '570b570b570bffffffffffff');
+    });
+
   });
 
-  it('should work as expected', function() {
-    assert.equal(objectIdStub(), '570b570b570bffffffffffff');
 
-    assert.equal(objectIdStub.next(), objectIdStub());
+  describe('with ctor option', function() {
 
-    assert.equal(objectIdStub(), '570b570b570bfffffffffffd');
+    beforeEach(function() {
+      objectIdStub = initObjectIdGenerator({ ctor: String });
+    });
 
-    objectIdStub.reset();
+    it('should work as expected', function() {
+      assert.equal(objectIdStub().toString(), '570b570b570bffffffffffff');
 
-    assert.equal(objectIdStub(), '570b570b570bffffffffffff');
+      assert.equal(objectIdStub.next().toString(), objectIdStub().toString());
+
+      assert.equal(objectIdStub().toString(), '570b570b570bfffffffffffd');
+
+      objectIdStub.reset();
+
+      assert.equal(objectIdStub().toString(), '570b570b570bffffffffffff');
+    });
+
   });
 
 });

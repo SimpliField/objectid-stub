@@ -11,6 +11,7 @@ Under production, you can simply use the NodeJS MongoDB Native Driver ObjectID
 
 ```js
 var initObjectIdStub = require('objectid-stub');
+var ObjectId = require('mongo/objectid');
 var objectIdStub = initObjectIdStub();
 
 objectIdStub();
@@ -26,6 +27,11 @@ objectIdStub.reset();
 
 objectIdStub();
 // '570b570b570bffffffffffff'
+
+objectIdStub = initObjectIdStub({ ctor: ObjectId });
+
+objectIdStub();
+// ObjectID('570b570b570bffffffffffff')
 ```
 
 ## API Functions
