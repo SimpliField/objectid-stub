@@ -3,24 +3,28 @@
 
 [![NPM version](https://badge.fury.io/js/objectid-stub.svg)](https://npmjs.org/package/objectid-stub) [![Build status](https://secure.travis-ci.org/SimpliField/objectid-stub.svg)](https://travis-ci.org/SimpliField/objectid-stub) [![Dependency Status](https://david-dm.org/SimpliField/objectid-stub.svg)](https://david-dm.org/SimpliField/objectid-stub) [![devDependency Status](https://david-dm.org/SimpliField/objectid-stub/dev-status.svg)](https://david-dm.org/SimpliField/objectid-stub#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/SimpliField/objectid-stub/badge.svg?branch=master)](https://coveralls.io/r/SimpliField/objectid-stub?branch=master) [![Code Climate](https://codeclimate.com/github/SimpliField/objectid-stub.svg)](https://codeclimate.com/github/SimpliField/objectid-stub)
 
+Under production, you can simply use the NodeJS MongoDB Native Driver ObjectID
+ constructor, in your test `òbjectid-stub` makes new ObjectIds creation
+ predictable.
+
 ## Usage
 
 ```js
 var initObjectIdStub = require('objectid-stub');
-var objectIdStub = initObjectIdStub()
+var objectIdStub = initObjectIdStub();
 
-objectIdStub()
+objectIdStub();
 // '570b570b570bffffffffffff'
 
-objectIdStub.next()
+objectIdStub.next();
 // '570b570b570bfffffffffffe'
 
-objectIdStub()
+objectIdStub();
 // '570b570b570bfffffffffffe'
 
-objectIdStub.reset()
+objectIdStub.reset();
 
-objectIdStub()
+objectIdStub();
 // '570b570b570bffffffffffff'
 ```
 
