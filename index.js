@@ -2,9 +2,9 @@
 
 /**
  * Create an object id from the given number
- * @param  {Number} from Number from wich to create the id
- * @param  {Function} MyConstrutor  a constructor to build ObjectId instances (default to strings)
- * @return {string|MyConstructor}      The object id in a string/MyConstructor representation
+ * @param  {Number} from            Number from wich to create the id
+ * @param  {Function} MyConstrutor  A constructor to build ObjectId instances (default to strings)
+ * @return {string|MyConstructor}   The object id in a string/MyConstructor representation
  * @api private
  */
 function _createObjectId(from, MyConstrutor) {
