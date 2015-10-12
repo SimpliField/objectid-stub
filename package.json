@@ -46,5 +46,8 @@
     "jsdoc-to-markdown": "^1.1.1",
     "mocha": "^2.3.2",
     "mocha-lcov-reporter": "0.0.2"
+  },
+  "dependencies": {
+    "yerror": "^1.0.1"
   }
 }

@@ -37,7 +37,7 @@ objectIdStub();
 ## API Functions
 
 <dl>
-<dt><a href="#_createObjectId">_createObjectId(from, MyConstrutor)</a> ⇒ <code>string</code> | <code>MyConstructor</code></dt>
+<dt><a href="#_createObjectId">_createObjectId(prefix, from, MyConstrutor)</a> ⇒ <code>string</code> | <code>MyConstructor</code></dt>
 <dd><p>Create an object id from the given number</p>
 </dd>
 <dt><a href="#objectIdStubInit">objectIdStubInit(options)</a> ⇒ <code>function</code></dt>
@@ -45,7 +45,7 @@ objectIdStub();
 </dd>
 </dl>
 <a name="_createObjectId"></a>
-## _createObjectId(from, MyConstrutor) ⇒ <code>string</code> &#124; <code>MyConstructor</code>
+## _createObjectId(prefix, from, MyConstrutor) ⇒ <code>string</code> &#124; <code>MyConstructor</code>
 Create an object id from the given number
 
 **Kind**: global function  
@@ -54,8 +54,9 @@ Create an object id from the given number
 
 | Param | Type | Description |
 | --- | --- | --- |
+| prefix | <code>String</code> | 12 chars string to prefix the id with |
 | from | <code>Number</code> | Number from wich to create the id |
-| MyConstrutor | <code>function</code> | a constructor to build ObjectId instances (default to strings) |
+| MyConstrutor | <code>function</code> | A constructor to build ObjectId instances (default to strings) |
 
 <a name="objectIdStubInit"></a>
 ## objectIdStubInit(options) ⇒ <code>function</code>
@@ -67,7 +68,9 @@ Instanciate a new object id generator
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | <code>Object</code> | generator options (options.ctor to specify a custom constructor) |
+| options | <code>Object</code> | Generator options |
+| options.ctor | <code>function</code> | Allow to specify a custom constructor) |
+| options.prefix | <code>String</code> | Allow to create object id with the given 12 chars prefix |
 
 
 * [objectIdStubInit(options)](#objectIdStubInit) ⇒ <code>function</code>

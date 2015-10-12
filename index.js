@@ -1,28 +1,38 @@
 'use strict';
 
+var YError = require('yerror');
+
 /**
  * Create an object id from the given number
+ * @param  {String} prefix          12 chars string to prefix the id with
  * @param  {Number} from            Number from wich to create the id
  * @param  {Function} MyConstrutor  A constructor to build ObjectId instances (default to strings)
  * @return {string|MyConstructor}   The object id in a string/MyConstructor representation
  * @api private
  */
-function _createObjectId(from, MyConstrutor) {
-  var id = '570b570b570b' + (from).toString(16);
+function _createObjectId(prefix, from, MyConstrutor) {
+  var id = prefix + (from).toString(16);
 
   return MyConstrutor ? new MyConstrutor(id) : id;
 }
 
 /**
  * Instanciate a new object id generator
- * @param  {Object} options generator options (options.ctor to specify a custom constructor)
- * @return {Function} The new generator
+ * @param  {Object}   options         Generator options
+ * @param  {Function} options.ctor    Allow to specify a custom constructor)
+ * @param  {String}   options.prefix  Allow to create object id with the given 12 chars prefix
+ * @return {Function}                 The new generator
  * @api public
  */
 function objectIdStubInit(options) {
   var discount;
 
   options = options || {};
+  if(options.prefix && !(/([a-f0-9]{12})/).test(options.prefix)) {
+    throw new YError('E_BAD_PREFIX', options.prefix);
+  }
+
+  options.prefix = options.prefix || 'abbacaca6a6a';
 
   /**
    * Generate the next id
@@ -30,7 +40,7 @@ function objectIdStubInit(options) {
    * @api public
    */
   function getNextObjectId() {
-    return _createObjectId(discount--, options.ctor);
+    return _createObjectId(options.prefix, discount--, options.ctor);
   }
 
   /**
@@ -39,7 +49,7 @@ function objectIdStubInit(options) {
    * @api public
    */
   getNextObjectId.next = function objectIdStubNext() {
-    return _createObjectId(discount, options.ctor);
+    return _createObjectId(options.prefix, discount, options.ctor);
   };
 
   /**
