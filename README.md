@@ -20,8 +20,17 @@ objectIdStub();
 objectIdStub.next();
 // '570b570b570bfffffffffffe'
 
+objectIdStub.next(3);
+// '570b570b570bfffffffffffb'
+
 objectIdStub();
 // '570b570b570bfffffffffffe'
+objectIdStub();
+// '570b570b570bfffffffffffd'
+objectIdStub();
+// '570b570b570bfffffffffffc'
+objectIdStub();
+// '570b570b570bfffffffffffb'
 
 objectIdStub.reset();
 
@@ -75,7 +84,7 @@ Instanciate a new object id generator
 
 * [objectIdStubInit(options)](#objectIdStubInit) ⇒ <code>function</code>
   * [~getNextObjectId()](#objectIdStubInit..getNextObjectId) ⇒ <code>String</code>
-    * [.next()](#objectIdStubInit..getNextObjectId.next) ⇒ <code>String</code>
+    * [.next(n)](#objectIdStubInit..getNextObjectId.next) ⇒ <code>String</code>
     * [.reset()](#objectIdStubInit..getNextObjectId.reset) ⇒ <code>void</code>
 
 <a name="objectIdStubInit..getNextObjectId"></a>
@@ -87,16 +96,21 @@ Generate the next id
 **Api**: public  
 
 * [~getNextObjectId()](#objectIdStubInit..getNextObjectId) ⇒ <code>String</code>
-  * [.next()](#objectIdStubInit..getNextObjectId.next) ⇒ <code>String</code>
+  * [.next(n)](#objectIdStubInit..getNextObjectId.next) ⇒ <code>String</code>
   * [.reset()](#objectIdStubInit..getNextObjectId.reset) ⇒ <code>void</code>
 
 <a name="objectIdStubInit..getNextObjectId.next"></a>
-#### getNextObjectId.next() ⇒ <code>String</code>
+#### getNextObjectId.next(n) ⇒ <code>String</code>
 Lookup what will be the next id
 
 **Kind**: static method of <code>[getNextObjectId](#objectIdStubInit..getNextObjectId)</code>  
 **Returns**: <code>String</code> - The next id  
 **Api**: public  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| n | <code>Number</code> | Number of ids to discard (defaults to 0) |
+
 <a name="objectIdStubInit..getNextObjectId.reset"></a>
 #### getNextObjectId.reset() ⇒ <code>void</code>
 Reset the internal id
