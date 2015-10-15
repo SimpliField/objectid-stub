@@ -22,6 +22,8 @@ describe('objectid-stub', function() {
       objectIdStub.reset();
 
       assert.equal(objectIdStub(), 'abbacaca6a6affffffffffff');
+
+      assert.equal(objectIdStub.next(4), 'abbacaca6a6afffffffffffa');
     });
 
   });
@@ -44,6 +46,8 @@ describe('objectid-stub', function() {
       objectIdStub.reset('570b570b570b');
 
       assert.equal(objectIdStub(), '570b570b570bffffffffffff');
+
+      assert.equal(objectIdStub.next(4), '570b570b570bfffffffffffa');
     });
 
   });
@@ -55,7 +59,7 @@ describe('objectid-stub', function() {
     });
 
     it('should work as expected', function() {
-      assert.equal(objectIdStub().toString(), 'abbacaca6a6affffffffffff');
+      assert(objectIdStub() instanceof String, 'Return instances of ctor');
 
       assert.equal(objectIdStub.next().toString(), objectIdStub().toString());
 
@@ -64,6 +68,8 @@ describe('objectid-stub', function() {
       objectIdStub.reset();
 
       assert.equal(objectIdStub().toString(), 'abbacaca6a6affffffffffff');
+
+      assert.equal(objectIdStub.next(4).toString(), 'abbacaca6a6afffffffffffa');
     });
 
   });

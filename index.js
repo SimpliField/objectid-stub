@@ -45,11 +45,13 @@ function objectIdStubInit(options) {
 
   /**
    * Lookup what will be the next id
-   * @return {String} The next id
+   * @param  {Number}   n   Number of ids to discard (defaults to 0)
+   * @return {String}       The next id
    * @api public
    */
-  getNextObjectId.next = function objectIdStubNext() {
-    return _createObjectId(options.prefix, discount, options.ctor);
+  getNextObjectId.next = function objectIdStubNext(n) {
+    n = n || 0;
+    return _createObjectId(options.prefix, discount - n, options.ctor);
   };
 
   /**
