@@ -1,3 +1,4 @@
+/* eslint prefer-numeric-literals:0 */
 'use strict';
 
 var YError = require('yerror');
@@ -11,7 +12,8 @@ var YError = require('yerror');
  * @api private
  */
 function _createObjectId(prefix, from, MyConstrutor) {
-  var id = prefix + (from).toString(16);
+  var hexa = 16;
+  var id = prefix + (from).toString(hexa);
 
   return MyConstrutor ? new MyConstrutor(id) : id;
 }
@@ -50,7 +52,9 @@ function objectIdStubInit(options) {
    * @api public
    */
   getNextObjectId.next = function objectIdStubNext(n) {
-    n = n || 0;
+    var start = 0;
+
+    n = n || start;
     return _createObjectId(options.prefix, discount - n, options.ctor);
   };
 
