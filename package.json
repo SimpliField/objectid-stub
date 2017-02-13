@@ -43,6 +43,6 @@
     "mocha-lcov-reporter": "1.2.0"
   },
   "dependencies": {
-    "yerror": "^1.0.1"
+    "yerror": "^2.0.0"
   }
 }
