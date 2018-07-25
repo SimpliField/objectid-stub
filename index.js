@@ -13,7 +13,7 @@ var YError = require('yerror');
  */
 function _createObjectId(prefix, from, MyConstrutor) {
   var hexa = 16;
-  var id = prefix + (from).toString(hexa);
+  var id = prefix + from.toString(hexa);
 
   return MyConstrutor ? new MyConstrutor(id) : id;
 }
@@ -30,7 +30,7 @@ function objectIdStubInit(options) {
   var discount;
 
   options = options || {};
-  if(options.prefix && !(/([a-f0-9]{12})/).test(options.prefix)) {
+  if (options.prefix && !/([a-f0-9]{12})/.test(options.prefix)) {
     throw new YError('E_BAD_PREFIX', options.prefix);
   }
 

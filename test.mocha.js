@@ -4,16 +4,15 @@
 var initObjectIdGenerator = require('./');
 var assert = require('assert');
 
-describe('objectid-stub', function() {
+describe('objectid-stub', () => {
   var objectIdStub;
 
-  describe('without options', function() {
-
-    beforeEach(function() {
+  describe('without options', () => {
+    beforeEach(() => {
       objectIdStub = initObjectIdGenerator();
     });
 
-    it('should work as expected', function() {
+    it('should work as expected', () => {
       assert.equal(objectIdStub(), 'abbacaca6a6affffffffffff');
 
       assert.equal(objectIdStub.next(), objectIdStub());
@@ -26,18 +25,16 @@ describe('objectid-stub', function() {
 
       assert.equal(objectIdStub.next(4), 'abbacaca6a6afffffffffffa');
     });
-
   });
 
-  describe('with prefix option', function() {
-
-    beforeEach(function() {
+  describe('with prefix option', () => {
+    beforeEach(() => {
       objectIdStub = initObjectIdGenerator({
         prefix: '570b570b570b',
       });
     });
 
-    it('should work as expected', function() {
+    it('should work as expected', () => {
       assert.equal(objectIdStub(), '570b570b570bffffffffffff');
 
       assert.equal(objectIdStub.next(), objectIdStub());
@@ -50,16 +47,14 @@ describe('objectid-stub', function() {
 
       assert.equal(objectIdStub.next(4), '570b570b570bfffffffffffa');
     });
-
   });
 
-  describe('with ctor option', function() {
-
-    beforeEach(function() {
+  describe('with ctor option', () => {
+    beforeEach(() => {
       objectIdStub = initObjectIdGenerator({ ctor: String });
     });
 
-    it('should work as expected', function() {
+    it('should work as expected', () => {
       assert(objectIdStub() instanceof String, 'Return instances of ctor');
 
       assert.equal(objectIdStub.next().toString(), objectIdStub().toString());
@@ -72,7 +67,5 @@ describe('objectid-stub', function() {
 
       assert.equal(objectIdStub.next(4).toString(), 'abbacaca6a6afffffffffffa');
     });
-
   });
-
 });
